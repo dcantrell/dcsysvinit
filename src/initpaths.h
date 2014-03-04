@@ -1,9 +1,11 @@
 /*
- * paths.h	Paths of files that init and related utilities need.
+ * initpaths.h	Paths of files that init and related utilities need.
  *
  * Version:	@(#) paths.h 2.85-8 05-Nov-2003
+ *          @(#) initpaths.h 2.88.1 04-Mar-2014
  *
  * Author:	Miquel van Smoorenburg, <miquels@cistron.nl>
+ *          David Cantrell <david.l.cantrell@gmail.com>
  *
  *		This file is part of the sysvinit suite,
  *		Copyright (C) 1991-2001 Miquel van Smoorenburg.
@@ -22,6 +24,9 @@
  *		along with this program; if not, write to the Free Software
  *		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+#include <paths.h>
+
 #define VT_MASTER	"/dev/tty0"		/* Virtual console master */
 #define CONSOLE		"/dev/console"		/* Logical system console */
 #define SECURETTY	"/etc/securetty"	/* List of root terminals */

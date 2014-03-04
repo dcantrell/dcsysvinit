@@ -37,7 +37,7 @@
 
 #include "init.h"
 #include "initreq.h"
-#include "paths.h"
+#include "initpaths.h"
 
 
 #if defined(__GLIBC__)
@@ -112,7 +112,7 @@ char *line)			/* Which line is this */
  *	Write an entry to the UTMP file. For DEAD_PROCESS, put
  *	the previous ut_line into oldline if oldline != NULL.
  */
-static void write_utmp(
+void write_utmp(
 char *user,			/* name of user */
 char *id,			/* inittab ID */
 int pid,			/* PID of process */

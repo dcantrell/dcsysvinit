@@ -72,7 +72,7 @@
 
 #include "init.h"
 #include "initreq.h"
-#include "paths.h"
+#include "initpaths.h"
 #include "reboot.h"
 #include "set.h"
 

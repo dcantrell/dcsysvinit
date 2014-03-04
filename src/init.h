@@ -46,6 +46,7 @@
 /* Prototypes. */
 void write_utmp_wtmp(char *user, char *id, int pid, int type, char *line);
 void write_wtmp(char *user, char *id, int pid, int type, char *line);
+void write_utmp(char *user, char *id, int pid, int type, char *line, char *oldline);
 #ifdef __GNUC__
 __attribute__ ((format (printf, 2, 3)))
 #endif

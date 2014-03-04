@@ -37,7 +37,7 @@
 
 #include "init.h"
 #include "initreq.h"
-#include "paths.h"
+#include "initpaths.h"
 
 
 #if defined(__GLIBC__)
@@ -143,7 +143,7 @@ char *line)			/* Which line is this */
  *	Write an entry to the UTMP file. For DEAD_PROCESS, put
  *	the previous ut_line into oldline if oldline != NULL.
  */
-static void write_utmp(
+void write_utmp(
 char *user,			/* name of user */
 char *id,			/* inittab ID */
 int pid,			/* PID of process */
@@ -233,29 +233,5 @@ char *oldline)			/* Line of old utmp entry. */
 	setutent();
 	pututline(&utmp);
 	endutent();
-}
-
-/*
- *	Write a record to both utmp and wtmp.
- */
-void write_utmp_wtmp(
-char *user,			/* name of user */
-char *id,			/* inittab ID */
-int pid,			/* PID of process */
-int type,			/* TYPE of entry */
-char *line)			/* LINE if used. */
-{
-	char	oldline[UT_LINESIZE];
-
-	/*
-	 *	For backwards compatibility we just return
-	 *	if user == NULL (means : clean up utmp file).
-	 */
-	if (user == NULL)
-		return;
-
-	oldline[0] = 0;
-	write_utmp(user, id, pid, type, line, oldline);
-	write_wtmp(user, id, pid, type, line && line[0] ? line : oldline);
 }
 

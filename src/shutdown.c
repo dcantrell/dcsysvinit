@@ -53,7 +53,7 @@
 #include <stdarg.h>
 #include <utmp.h>
 #include <syslog.h>
-#include "paths.h"
+#include "initpaths.h"
 #include "reboot.h"
 #include "initreq.h"
 #include "init.h"

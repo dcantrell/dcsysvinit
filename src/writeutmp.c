@@ -37,7 +37,7 @@
 
 #include "init.h"
 #include "initreq.h"
-#include "paths.h"
+#include "initpaths.h"
 
 
 #if defined(__GLIBC__)
