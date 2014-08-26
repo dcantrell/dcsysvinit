@@ -4,19 +4,12 @@
 # Author:  David Cantrell <david.l.cantrell@gmail.com>
 #
 
-sbin_PROGRAMS = init halt shutdown runlevel killall5 fstab-decode sulogin bootlogd
+sbin_PROGRAMS = init halt shutdown runlevel killall5 fstab-decode bootlogd
 bin_PROGRAMS = last mesg utmpdump wall mountpoint
 
 init_SOURCES = init.c initutmp.c writeutmp.c
 if USE_SELINUX
 init_LDADD = $(SELINUX_LIBS)
-endif
-
-sulogin_SOURCES = sulogin.c consoles.c
-if USE_SELINUX
-sulogin_LDADD = $(SELINUX_LIBS) -lcrypt
-else
-sulogin_LDADD = -lcrypt
 endif
 
 halt_SOURCES = halt.c ifdown.c hddown.c utmp.c writeutmp.c
