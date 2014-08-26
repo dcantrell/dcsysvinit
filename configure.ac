@@ -1,6 +1,6 @@
 AC_PREREQ([2.63])
 AC_INIT([sysvinit], [2.88.1], [david.l.cantrell@gmail.com])
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE
 
 AC_CONFIG_SRCDIR([src/init.c])
 AC_CONFIG_HEADERS([config.h])
