@@ -5,7 +5,6 @@
 #
 
 sbin_PROGRAMS = init halt shutdown runlevel killall5 fstab-decode bootlogd
-bin_PROGRAMS = last mesg utmpdump wall mountpoint
 
 init_SOURCES = init.c initutmp.c writeutmp.c
 if USE_SELINUX
@@ -19,11 +18,6 @@ killall5_SOURCES = killall5.c
 fstab_decode_SOURCES = fstab-decode.c
 bootlogd_SOURCES = bootlogd.c
 
-last_SOURCES = last.c
-mesg_SOURCES = mesg.c
-utmpdump_SOURCES = utmpdump.c
-wall_SOURCES = dowall.c wall.c
-mountpoint_SOURCES = mountpoint.c
 
 
 
