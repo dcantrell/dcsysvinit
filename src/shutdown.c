@@ -498,7 +498,11 @@ int main(int argc, char **argv)
 	int			user_ok = 0;
 
 	/* We can be installed setuid root (executable for a special group) */
-	setuid(geteuid());
+	errno = 0;
+	if (setuid(geteuid()) == -1) {
+		fprintf(stderr, "%s (%d): %s\n", __FILE__, __LINE__, strerror(errno));
+		abort();
+	}
 
 	if (getuid() != 0) {
   		fprintf(stderr, "shutdown: you must be root to do that!\n");
