@@ -4,6 +4,7 @@
 Makefile
 Makefile.in
 aclocal.m4
+autom4te.cache
 bootlogd
 config.guess
 config.h
@@ -18,16 +19,10 @@ halt
 init
 install-sh
 killall5
-last
 libtool
 ltmain.sh
 m4
-mesg
 missing
-mountpoint
 runlevel
 shutdown
 stamp-h1
-sulogin
-utmpdump
-wall
