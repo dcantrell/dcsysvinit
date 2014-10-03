@@ -37,12 +37,6 @@ char *v_ifdown = "@(#)ifdown.c  1.11  02-Jun-1998  miquels@cistron.nl";
 
 #define MAX_IFS	64
 
-/* XXX: Ideally this would get detected at configure time... */
-#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || \
-    defined(__NetBSD__) || defined(__OpenBSD__)
-#define HAVE_SOCKADDR_SA_LEN 1
-#endif
-
 #ifndef _SIZEOF_ADDR_IFREQ
 #ifdef HAVE_SOCKADDR_SA_LEN
 #define _SIZEOF_ADDR_IFREQ(ifr) \

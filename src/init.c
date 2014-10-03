@@ -772,16 +772,6 @@ void console_stty(void)
 		return;
 	}
 
-#ifdef __FreeBSD_kernel__
-	/*
-	 * The kernel of FreeBSD expects userland to set TERM.  Usually, we want
-	 * "cons25".  Later, gettys might disagree on this (i.e. we're not using
-	 * syscons) but some boot scripts, like /etc/init.d/xserver-xorg, still
-	 * need a non-dumb terminal.
-	 */
-	putenv ("TERM=cons25");
-#endif
-
 	(void) tcgetattr(fd, &tty);
 
 	tty.c_cflag &= CBAUD|CBAUDEX|CSIZE|CSTOPB|PARENB|PARODD;
@@ -794,9 +784,7 @@ void console_stty(void)
 	tty.c_cc[VEOF]	    = CEOF;
 	tty.c_cc[VTIME]	    = 0;
 	tty.c_cc[VMIN]	    = 1;
-#ifdef VSWTC /* not defined on FreeBSD */
 	tty.c_cc[VSWTC]	    = _POSIX_VDISABLE;
-#endif /* VSWTC */
 	tty.c_cc[VSTART]    = CSTART;
 	tty.c_cc[VSTOP]	    = CSTOP;
 	tty.c_cc[VSUSP]	    = CSUSP;
@@ -810,11 +798,7 @@ void console_stty(void)
 	/*
 	 *	Set pre and post processing
 	 */
-	tty.c_iflag = IGNPAR|ICRNL|IXON|IXANY
-#ifdef IUTF8	/* Not defined on FreeBSD */
-			| (tty.c_iflag & IUTF8)
-#endif /* IUTF8 */
-		;
+	tty.c_iflag = IGNPAR|ICRNL|IXON|IXANY | (tty.c_iflag & IUTF8);
 	tty.c_oflag = OPOST|ONLCR;
 	tty.c_lflag = ISIG|ICANON|ECHO|ECHOCTL|ECHOPRT|ECHOKE;
 
