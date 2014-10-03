@@ -1,0 +1,35 @@
+Installation follows the usual autoconf methods:
+
+    ./configure [options]
+    make
+    make install
+
+See ./configure --help for available options.  Aside from the usual path and
+build options, here are some specific to dcsysvinit:
+
+    --enable-selinux (default is no)
+        Use this if installing on a system with SELinux support.
+
+    --enable-accton (default is no)
+        Tells the shutdown(8) command that it should run accton(8) to turn
+        off accounting as part of the shutdown procedure.  Many systems
+        handle this via an init script, but Debian systems do it this way
+        (maybe?  this was under the Debian CFLAGS in the old src/Makefile).
+
+    --enable-sysfs (default is yes)
+        Use sysfs (/sys) for disk device discovery.  This is 'yes' by
+        default since it is 2014 as I type this and we all have sysfs.
+
+    --enable-sanetio (default is yes)
+        Disable flow control, ignore break, and make nl/cr more usable.
+        This is 'yes' by default but was previously under the 'SuSE' CFLAGS
+        section in the old src/Makefile.
+
+    --enable-sigint_onlyonce (default is no)
+        Enable SIGINT handling via the keyboard in init(8).  This is an odd
+        one and I do not totally understand it as I write this, but it was
+        from the SuSE CFLAGS section in the old src/Makefile.  If it does
+        not make sense, I will remove it later.
+
+The options above have corresponding --disable-OPTION modes to disable that
+feature at build time.
