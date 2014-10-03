@@ -31,9 +31,7 @@
 #include <sys/stat.h>
 #include <sys/ioctl.h>
 #include <sys/wait.h>
-#ifdef __linux__
 #include <sys/kd.h>
-#endif
 #include <sys/resource.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -706,7 +704,7 @@ void coredump(void)
  *	Then sleep 30 seconds and try to continue.
  */
 static
-#if defined(STACK_DEBUG) && defined(__linux__)
+#if defined(STACK_DEBUG)
 # ifdef __GNUC__
 void segv_handler(int sig __attribute__((unused)), struct sigcontext ctx)
 # else
@@ -2640,7 +2638,6 @@ void init_main(void)
 	}
 #endif
 
-#ifdef __linux__
 	/*
 	 *	Tell the kernel to send us SIGINT when CTRL-ALT-DEL
 	 *	is pressed, and that we want to handle keyboard signals.
@@ -2651,7 +2648,6 @@ void init_main(void)
 		close(f);
 	} else
 		(void) ioctl(0, KDSIGACCEPT, SIGWINCH);
-#endif
 
 	/*
 	 *	Ignore all signals.

@@ -32,8 +32,6 @@ char *v_hddown = "@(#)hddown.c  1.02  22-Apr-2003  miquels@cistron.nl";
 #include <fcntl.h>
 #include <dirent.h>
 
-#ifdef __linux__
-
 #include <sys/ioctl.h>
 #include <linux/hdreg.h>
 #include <linux/fs.h>
@@ -546,19 +544,6 @@ int hdflush(void)
 }
 
 #endif /* ! USE_SYSFS */
-#else /* __linux__ */
-
-int hddown(void)
-{
-	return 0;
-}
-
-int hdflush(void)
-{
-	return 0;
-}
-
-#endif /* __linux__ */
 
 #ifdef STANDALONE
 int main(int argc, char **argv)
