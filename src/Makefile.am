@@ -30,15 +30,3 @@ install-exec-hook:
 		rm -f $(DESTDIR)/dev/initctl ; \
 		mknod -m 0600 $(DESTDIR)/dev/initctl p ; \
 	fi
-
-
-
-
-
-#ifeq ($(DISTRO),Debian)
-#CPPFLAGS+= -DACCTON_OFF
-#endif
-#
-#ifeq ($(DISTRO),SuSE)
-#CPPFLAGS+= -DUSE_SYSFS -DSANE_TIO -DSIGINT_ONLYONCE -DUSE_ONELINE
-#endif

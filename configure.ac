@@ -28,6 +28,46 @@ if test x$selinux = xyes ; then
     CFLAGS="$CFLAGS $SELINUX_CFLAGS -DWITH_SELINUX"
 fi
 
+# Should shutdown(8) turn off accounting?
+AC_ARG_ENABLE(accton,
+    AC_HELP_STRING([--enable-accton],
+                   [enable shutdown(8) to run accton(8) (default is no)]),
+    [accton=$enableval],
+    [accton=no])
+if test x$accton = xyes ; then
+    CFLAGS="$CFLAGS -DACCTON_OFF"
+fi
+
+# Building on a sysfs system?
+AC_ARG_ENABLE(sysfs,
+    AC_HELP_STRING([--enable-sysfs],
+                   [use sysfs (/sys) for disk device discovery (default is yes)]),
+    [sysfs=$enableval],
+    [sysfs=yes])
+if test x$sysfs = xyes ; then
+    CFLAGS="$CFLAGS -DUSE_SYSFS"
+fi
+
+# Sane (?) terminal settings
+AC_ARG_ENABLE(sane_tio,
+    AC_HELP_STRING([--enable-sane_tio],
+                   [disable flow control, ignore break, and make nl/cr more usable (default is yes)]),
+    [sane_tio=$enableval],
+    [sane_tio=yes])
+if test x$sane_tio = xyes ; then
+    CFLAGS="$CFLAGS -DSANE_TIO"
+fi
+
+# Handle SIGINT from the keyboard in init(8)
+AC_ARG_ENABLE(sigint_onlyonce,
+    AC_HELP_STRING([--enable-sigint_onlyonce],
+                   [enable SIGINT from the keyboard once in init(8) (default is no)]),
+    [sigint_onlyonce=$enableval],
+    [sigint_onlyonce=no])
+if test x$sigint_onlyonce = xyes ; then
+    CFLAGS="$CFLAGS -DSIGINT_ONLYONCE=1"
+fi
+
 AM_CONDITIONAL(USE_SELINUX, [test x$selinux == xyes])
 
 # Checks for header files.
