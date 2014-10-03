@@ -56,9 +56,10 @@
 #include <signal.h>
 #include <stdio.h>
 #include <getopt.h>
+#include "config.h"
 #include "reboot.h"
 
-char *Version = "@(#)halt  2.86  31-Jul-2004 miquels@cistron.nl";
+char *Version = "@(#)halt " PACKAGE_VERSION "  " BUILD_DATE "  david.l.cantrell@gmail.com";
 char *progname;
 
 #define KERNEL_MONITOR	1 /* If halt() puts you into the kernel monitor. */

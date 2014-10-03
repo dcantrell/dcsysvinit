@@ -53,8 +53,9 @@
 #ifdef __linux__
 #include <sys/mount.h>
 #endif
+#include "config.h"
 
-char *Version = "@(#) bootlogd 2.86 03-Jun-2004 miquels@cistron.nl";
+char *Version = "@(#) bootlogd " PACKAGE_VERSION "  " BUILD_DATE "  david.l.cantrell@gmail.com";
 
 #define LOGFILE	"/var/log/boot"
 

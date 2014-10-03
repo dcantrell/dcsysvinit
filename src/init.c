@@ -7,8 +7,6 @@
  *
  * Version:	@(#)init.c  2.86  30-Jul-2004  miquels@cistron.nl
  */
-#define VERSION "2.89"
-#define DATE    "26-Mar-2010"
 /*
  *		This file is part of the sysvinit suite,
  *		Copyright (C) 1991-2004 Miquel van Smoorenburg.
@@ -70,6 +68,7 @@
 #  endif
 #endif
 
+#include "config.h"
 #include "init.h"
 #include "initreq.h"
 #include "initpaths.h"
@@ -98,9 +97,9 @@
 		} while(0)
 
 /* Version information */
-char *Version = "@(#) init " VERSION "  " DATE "  miquels@cistron.nl";
-char *bootmsg = "version " VERSION " %s";
-#define E_VERSION "INIT_VERSION=sysvinit-" VERSION
+char *Version = "@(#)init " PACKAGE_VERSION "  " BUILD_DATE "  david.l.cantrell@gmail.com";
+char *bootmsg = "version " PACKAGE_VERSION " %s";
+#define E_VERSION "INIT_VERSION=sysvinit-" PACKAGE_VERSION
 
 CHILD *family = NULL;		/* The linked list of all entries */
 CHILD *newFamily = NULL;	/* The list after inittab re-read */

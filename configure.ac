@@ -8,6 +8,8 @@ AC_CONFIG_MACRO_DIR([m4])
 
 LT_INIT
 
+AC_DEFINE_UNQUOTED([BUILD_DATE], ["$(date +%d-%b-%Y)"], [Date of build])
+
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_INSTALL
@@ -128,7 +130,7 @@ cflags_filter() {
         fi
     done
 }
-CFLAGS="`cflags_filter $CFLAGS`"
+CFLAGS="$(cflags_filter $CFLAGS)"
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile])

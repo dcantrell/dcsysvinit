@@ -53,13 +53,14 @@
 #include <stdarg.h>
 #include <utmp.h>
 #include <syslog.h>
+#include "config.h"
 #include "initpaths.h"
 #include "reboot.h"
 #include "initreq.h"
 #include "init.h"
 
 
-char *Version = "@(#) shutdown 2.86-1 31-Jul-2004 miquels@cistron.nl";
+char *Version = "@(#) shutdown " PACKAGE_VERSION "  " BUILD_DATE "  david.l.cantrell@gmail.com";
 
 #define MESSAGELEN	256
 
