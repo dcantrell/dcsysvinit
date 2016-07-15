@@ -1,7 +1,7 @@
-sysvinit
+dcsysvinit
 
 The source tree you are looking at now came from here:
-    https://github.com/dcantrell/sysvinit
+    https://github.com/dcantrell/dcsysvinit
 
 This tree was imported from code from here:
     http://savannah.nongnu.org/projects/sysvinit
@@ -31,4 +31,4 @@ QUESTIONS
 
 Direct questions for this fork to David Cantrell <david.l.cantrell@gmail.com>
 I have not talked to the current developers of sysvinit or the original
-author, so they are likely unaware of this fork.
+author, so I do not know if they are aware of this fork or not.
